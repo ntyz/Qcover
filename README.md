@@ -94,9 +94,7 @@ Computation of Quantum Mean Value for Shallow QAOA Circuits", arXiv:2112.11151 (
 
 
 # Authors
-The first release of Qcover was developed by the quantum operating system team in Beijing Academy of Quantum Information Sciences.
-
-Qcover is constantly growing and many other people have already contributed to it in the meantime.
+This is the code development library of software Qcover. The latest update Qcover software can be found here. And the improved version will be updated to the main library at https://github.com/BAQIS-Quantum/Qcover. Therefore, if you have any questions during the use of Qcover, you can raise them in the Issues.
 
 # License
 Qcover is released under the Apache 2 license.
