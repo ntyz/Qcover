@@ -93,7 +93,7 @@ Chen Qian, Peng Qian, Xiao Xiao, Meng-Jun Hu, and Done E. Liu, "Efficient Classi
 Computation of Quantum Mean Value for Shallow QAOA Circuits", arXiv:2112.11151 (2021). 
 
 
-# Authors
+# Statement
 This is the code development library of software Qcover. The latest update Qcover software can be found here. And the improved version will be updated to the main library at https://github.com/BAQIS-Quantum/Qcover. Therefore, if you have any questions during the use of Qcover, you can raise them in the Issues.
 
 # License
