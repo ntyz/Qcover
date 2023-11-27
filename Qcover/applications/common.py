@@ -5,8 +5,11 @@ from collections import OrderedDict, defaultdict
 
 import numpy as np
 import networkx as nx
-from qiskit.aqua import aqua_globals
-from qiskit.aqua.operators import StateFn
+# from qiskit.aqua import aqua_globals
+# from qiskit.aqua.operators import StateFn
+
+from qiskit.utils import algorithm_globals
+# from qiskit.opflow import StateFn
 
 
 def get_ising_matrix(qubo_mat: np.array):
@@ -25,7 +28,8 @@ def get_ising_matrix(qubo_mat: np.array):
     for i in range(mat_len):
         for j in range(mat_len):
             if i == j:
-                ising_mat[i][i] = 1.0 * np.true_divide(qubo_mat[i][i], 2.0) + np.sum(qubo_mat[i]) - qubo_mat[i][i]
+                ising_mat[i][i] = 1.0 * np.true_divide(qubo_mat[i][i], 2.0) + \
+                                  np.true_divide(np.sum(qubo_mat[i]) - qubo_mat[i][i], 2.0)
             else:
                 ising_mat[i][j] = 1.0 * np.true_divide(qubo_mat[i][j], 4.0)
 
@@ -54,13 +58,13 @@ def get_weights_graph(ising_mat: np.array, graph: nx.Graph=None):
 
     graph = nx.Graph()
     for i in range(cnt):
-        for j in range(cnt):
+        for j in range(i, cnt):
             if i == j:
                 graph.add_node(node_map[i], weight=ising_mat[i][i])
             else:
                 if abs(ising_mat[i][j] - 0.) <= 1e-8:
                     continue
-                graph.add_edge(node_map[i], node_map[j], weight=ising_mat[i][j])
+                graph.add_edge(node_map[i], node_map[j], weight=2 * ising_mat[i][j])
 
     return graph    
 
@@ -145,7 +149,7 @@ def random_number_list(n, weight_range=(1, 100), seed=None):
         numpy.ndarray: the list of integer numbers.
     """
     if seed:
-        aqua_globals.random_seed = seed
+        algorithm_globals.random_seed = seed
 
-    number_list = aqua_globals.random.integers(low=weight_range[0], high=(weight_range[1] + 1), size=n)
+    number_list = algorithm_globals.random.integers(low=weight_range[0], high=(weight_range[1] + 1), size=n)
     return number_list

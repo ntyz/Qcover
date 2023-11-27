@@ -5,6 +5,10 @@ from .circuitbycirq import CircuitByCirq
 from .circuitbyqulacs import CircuitByQulacs
 # from .circuitbytket import CircuitByTket
 from .circuitbytensor import CircuitByTensor
+from .circuitbyqton import CircuitByQton
+from .circuitbyquafu import CircuitByQuafu
+import warnings
+warnings.filterwarnings("ignore")
 
 __all__ = [
     'Backend',
@@ -12,5 +16,7 @@ __all__ = [
     'CircuitByQiskit',
     'CircuitByProjectq',
     'CircuitByTensor',
-    'CircuitByQulacs'
+    'CircuitByQulacs',
+    'CircuitByQton',
+    'CircuitByQuafu'
 ]

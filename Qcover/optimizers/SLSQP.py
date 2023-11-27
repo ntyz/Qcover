@@ -9,7 +9,7 @@ from Qcover.exceptions import ArrayShapeError
 logger = logging.getLogger(__name__)
 
 
-class SLSQP:
+class SLSQP(Optimizer):
     """
     SLSQP: a numerical optimization method for constrained problems
 
